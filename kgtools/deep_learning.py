@@ -1,10 +1,7 @@
 """deep learning toolbox based on PyTorch"""
 import time
 import copy
-
-import torch.nn as nn
-import torch.optim as optim
-from torch.optim import lr_scheduler
+from tqdm import tqdm
 
 
 def train_model(model, criterion, optimizer, scheduler, dataloaders, num_epochs=25):
@@ -13,7 +10,7 @@ def train_model(model, criterion, optimizer, scheduler, dataloaders, num_epochs=
     best_model_wts = copy.deepcopy(model.state_dict())
     best_acc = 0.0
 
-    for epoch in range(num_epochs):
+    for epoch in tqdm(range(num_epochs)):
         print(f"Epoch {epoch}/{num_epochs-1}")
         print("-" * 10)
 
